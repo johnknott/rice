@@ -17,6 +17,7 @@
 #include "ruby_version_code.hpp"
 
 #include <ruby.h>
+#include <internal.h>
 
 #ifdef WIN32
 #include "win32.hpp"
