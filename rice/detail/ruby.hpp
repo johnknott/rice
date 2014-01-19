@@ -68,6 +68,11 @@ extern "C" typedef VALUE (*RUBY_VALUE_FUNC)(VALUE);
   #undef bind
 #endif
 
+struct method_table_wrapper {
+    st_table *tbl;
+    size_t serial;
+};
+
 #if RICE__RUBY_VERSION_CODE < 190
 namespace Rice
 {
