@@ -16,7 +16,7 @@
 
 /* 1.8.6 compatibility */
 #ifndef RCLASS_M_TBL
-#define RCLASS_M_TBL(x) (RCLASS(x)->m_tbl_wrapper->tbl)
+#define RCLASS_M_TBL(x) (RCLASS(x)->m_tbl)
 #endif
 
 namespace
@@ -149,8 +149,8 @@ define_method_with_data(
 
   // Copy the method entry to the real class
   st_data_t dummy_entry;
-  st_lookup(RCLASS_M_TBL(origin), rb_intern("dummy"), &dummy_entry);
-  st_insert(RCLASS_M_TBL(klass), id, dummy_entry);
+  st_lookup( RCLASS(origin)->m_tbl_wrapper->tbl, rb_intern("dummy"), &dummy_entry);
+  st_insert( RCLASS(klass)->m_tbl_wrapper->tbl, id, dummy_entry);
 
   // Clear the table so we don't try to double-free the method entry
   RCLASS_M_TBL(origin) = st_init_numtable();
